@@ -1,0 +1,53 @@
+{
+  "name": "generate_schedule",
+  "description": "Generate an optimized schedule between two dates based on user availability and task priorities",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "fecha_inicio": {
+        "type": "string",
+        "format": "date",
+        "description": "Start date of the scheduling window (YYYY-MM-DD)"
+      },
+      "fecha_fin": {
+        "type": "string",
+        "format": "date",
+        "description": "End date of the scheduling window (YYYY-MM-DD)"
+      },
+      "disponibilidad": {
+        "type": "array",
+        "description": "Available time blocks per day",
+        "items": {
+          "type": "object",
+          "properties": {
+            "dia": {
+              "type": "string",
+              "description": "Day of the week (e.g., Monday, Tuesday)"
+            },
+            "bloques": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "inicio": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "Start time (HH:MM)"
+                  },
+                  "fin": {
+                    "type": "string",
+                    "format": "time",
+                    "description": "End time (HH:MM)"
+                  }
+                },
+                "required": ["inicio", "fin"]
+              }
+            }
+          },
+          "required": ["dia", "bloques"]
+        }
+      }
+    },
+    "required": ["fecha_inicio", "fecha_fin", "disponibilidad"]
+  }
+}

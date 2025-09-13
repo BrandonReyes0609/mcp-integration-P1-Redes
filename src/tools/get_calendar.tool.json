@@ -1,0 +1,8 @@
+{
+  "name": "get_calendar",
+  "description": "Get the current generated schedule in a structured format",
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

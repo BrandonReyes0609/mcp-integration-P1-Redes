@@ -1,0 +1,41 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "MCP Schedulizer",
+  "name_for_model": "schedulizer",
+  "description_for_model": "A scheduling assistant that manages tasks and generates weekly plans based on priority and deadlines.",
+  "description_for_human": "Plan your week with tasks and deadlines using this scheduler tool.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "jsonrpc",
+    "url": "http://localhost:5000/jsonrpc"
+  },
+  "tools": [
+    {
+      "name": "add_task",
+      "description": "Add a new task to the scheduling system",
+      "input_schema": "add_task.tool.json"
+    },
+    {
+      "name": "remove_task",
+      "description": "Remove a specific task by its name",
+      "input_schema": "remove_task.tool.json"
+    },
+    {
+      "name": "list_tasks",
+      "description": "List all currently stored tasks",
+      "input_schema": "list_tasks.tool.json"
+    },
+    {
+      "name": "generate_schedule",
+      "description": "Generate an optimized schedule between two dates",
+      "input_schema": "generate_schedule.tool.json"
+    },
+    {
+      "name": "get_calendar",
+      "description": "Get the current generated schedule",
+      "input_schema": "get_calendar.tool.json"
+    }
+  ]
+}

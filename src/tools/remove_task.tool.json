@@ -1,0 +1,11 @@
+{
+  "name": "remove_task",
+  "description": "Remove a specific task by its name",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "nombre": { "type": "string", "description": "Name of the task to remove" }
+    },
+    "required": ["nombre"]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "list_tasks",
+  "description": "List all currently stored tasks",
+  "inputSchema": {
+    "type": "object",
+    "properties": {}
+  }
+}

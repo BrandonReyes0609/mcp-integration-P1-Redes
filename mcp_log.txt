@@ -1,0 +1,86 @@
+### REQUEST ###
+{
+  "tool_name": "add_task",
+  "tool_use_id": "af1a9dcf-be61-4d75-8997-cd4aa1e1a60f",
+  "parameters": {
+    "nombre": "Estudiar redes",
+    "duracion": 120,
+    "deadline": "2025-09-20T23:59",
+    "prioridad": "alta",
+    "categoria": "universidad"
+  }
+}
+### RESPONSE ###
+{
+  "result": {
+    "status": "tarea agregada correctamente",
+    "tareas_totales": 1
+  },
+  "tool_use_id": "af1a9dcf-be61-4d75-8997-cd4aa1e1a60f"
+}
+
+### REQUEST ###
+{
+  "tool_name": "list_tasks",
+  "tool_use_id": "0bf1a773-5635-4a49-b1ae-57d5d18fe5e8",
+  "parameters": {}
+}
+### RESPONSE ###
+{
+  "result": {
+    "tasks": [
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-20T23:59",
+        "duracion": 120,
+        "nombre": "Estudiar redes",
+        "prioridad": "alta"
+      }
+    ]
+  },
+  "tool_use_id": "0bf1a773-5635-4a49-b1ae-57d5d18fe5e8"
+}
+
+### REQUEST ###
+{
+  "tool_name": "add_task",
+  "tool_use_id": "383c5712-58bd-423e-b43f-8958156e3bdb",
+  "parameters": {
+    "nombre": "Estudiar redes",
+    "duracion": 120,
+    "deadline": "2025-09-20T23:59",
+    "prioridad": "alta",
+    "categoria": "universidad"
+  }
+}
+### RESPONSE ###
+{
+  "result": {
+    "status": "tarea agregada correctamente",
+    "tareas_totales": 1
+  },
+  "tool_use_id": "383c5712-58bd-423e-b43f-8958156e3bdb"
+}
+
+### REQUEST ###
+{
+  "tool_name": "list_tasks",
+  "tool_use_id": "f78805c0-0977-46e5-84d7-bdcf71374ddb",
+  "parameters": {}
+}
+### RESPONSE ###
+{
+  "result": {
+    "tasks": [
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-20T23:59",
+        "duracion": 120,
+        "nombre": "Estudiar redes",
+        "prioridad": "alta"
+      }
+    ]
+  },
+  "tool_use_id": "f78805c0-0977-46e5-84d7-bdcf71374ddb"
+}
+

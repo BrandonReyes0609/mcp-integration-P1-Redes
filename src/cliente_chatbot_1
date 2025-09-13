@@ -1,0 +1,161 @@
+"""
+Chatbot anfitrión para interactuar con:
+1. Claude API (Anthropic)
+2. Servidor MCP-Schedulizer local
+Incluye manejo de contexto y log de interacciones.
+"""
+
+import json
+import requests
+from rich import print
+import datetime
+import os
+import anthropic
+from dotenv import load_dotenv
+
+
+# ==============================
+# CONFIG
+# ==============================
+SERVER_URL = "http://localhost:8000"
+#CLAUDE_MODEL = "claude-3-opus-20240229"
+#CLAUDE_MODEL
+#model="claude-3-sonnet-20240229"
+CLAUDE_MODEL="claude-sonnet-4-20250514"
+# Cargar variables desde archivo .env
+load_dotenv()
+
+# Inicializar cliente Anthropic con API Key
+client = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+
+# Historial de conversación
+context = []
+
+# ==============================
+# FUNCIONES AUXILIARES
+# ==============================
+
+def log_interaction(source, request, response):
+    """Guardar en log todas las interacciones."""
+    log_path = os.path.join("data", "mcp_log.txt")
+    with open(log_path, "a", encoding="utf-8") as f:
+        f.write(f"[{datetime.datetime.now()}] {source}\n")
+        f.write(f"REQUEST: {request}\n")
+        f.write(f"RESPONSE: {response}\n\n")
+
+def enviar_rpc(method, params=None):
+    """Enviar petición JSON-RPC al servidor MCP local."""
+    payload = {
+        "jsonrpc": "2.0",
+        "method": method,
+        "params": params or {},
+        "id": 1
+    }
+    response = requests.post(SERVER_URL, json=payload)
+    result = response.json()
+    log_interaction("MCP-Schedulizer", payload, result)
+    return result
+
+def send_query_to_llm(prompt, context=None):
+    """Enviar consulta a Claude API con historial de contexto."""
+    messages = []
+    if context:
+        messages.extend(context)
+    messages.append({"role": "user", "content": prompt})
+
+    response = client.messages.create(
+        model=CLAUDE_MODEL,
+        max_tokens=300,
+        messages=messages
+    )
+    return response.content[0].text
+
+# ==============================
+# OPCIONES DEL MENÚ
+# ==============================
+
+def menu():
+    print("[bold cyan]Chatbot Anfitrión - MCP Schedulizer[/bold cyan]")
+    print("Comandos disponibles:")
+    print("1. Agregar tarea")
+    print("2. Listar tareas")
+    print("3. Generar horario")
+    print("4. Eliminar tarea por ID")
+    print("5. Exportar agenda")
+    print("6. Chat con Claude")
+    print("7. Salir")
+
+def modo_llm():
+    """Modo conversación con Claude manteniendo contexto."""
+    global context
+    while True:
+        user_input = input("You: ")
+        if user_input.lower() in ["exit", "quit", "salir"]:
+            break
+        context.append({"role": "user", "content": user_input})
+        answer = send_query_to_llm(user_input, context)
+        print("Claude:", answer)
+        context.append({"role": "assistant", "content": answer})
+        log_interaction("Claude API", user_input, answer)
+
+def main():
+    while True:
+        menu()
+        opcion = input("\nSelecciona una opción (1-7): ")
+
+        if opcion == "1":
+            nombre = input("Nombre de la tarea: ")
+            duracion = int(input("Duración (minutos): "))
+            deadline = input("Fecha límite (YYYY-MM-DDTHH:MM): ")
+            prioridad = input("Prioridad (alta/media/baja): ")
+            categoria = input("Categoría: ")
+
+            resultado = enviar_rpc("add_task", {
+                "nombre": nombre,
+                "duracion": duracion,
+                "deadline": deadline,
+                "prioridad": prioridad,
+                "categoria": categoria
+            })
+            print("[green]Respuesta:[/green]", resultado)
+
+        elif opcion == "2":
+            resultado = enviar_rpc("list_tasks")
+            print("[yellow]Tareas actuales:[/yellow]")
+            for idx, t in enumerate(resultado["result"]["tareas"]):
+                print(f"{idx}. {t['nombre']} | {t['duracion']} min | deadline: {t['deadline']} | prioridad: {t['prioridad']}")
+
+        elif opcion == "3":
+            inicio = input("Fecha de inicio (YYYY-MM-DD): ")
+            disponibilidad = int(input("Minutos disponibles por día: "))
+            resultado = enviar_rpc("generate_schedule", {
+                "fecha_inicio": inicio + "T08:00",
+                "disponibilidad": disponibilidad
+            })
+            print("[magenta]Agenda generada:[/magenta]")
+            for bloque in resultado["result"]["agenda"]:
+                print(bloque["fecha"], bloque["hora_inicio"], "-", bloque["hora_fin"], "->", bloque["tarea"])
+
+        elif opcion == "4":
+            id_tarea = int(input("ID de la tarea a eliminar: "))
+            resultado = enviar_rpc("remove_task", {"id": id_tarea})
+            print("[red]Respuesta:[/red]", resultado)
+
+        elif opcion == "5":
+            resultado = enviar_rpc("export_schedule")
+            print("[blue]Exportación completada en 'agenda_exportada.csv'[/blue]")
+            print(resultado["result"]["status"])
+
+        elif opcion == "6":
+            print("[cyan]Entrando al modo conversación con Claude... (escribe 'exit' para salir)[/cyan]")
+            modo_llm()
+
+        elif opcion == "7":
+            print("[bold red]Saliendo...[/bold red]")
+            break
+
+        else:
+            print("[red]Opción inválida[/red]")
+
+if __name__ == "__main__":
+    main()

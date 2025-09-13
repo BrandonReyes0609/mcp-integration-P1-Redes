@@ -1,0 +1,19 @@
+{
+  "name": "add_task",
+  "description": "Add a new task to the scheduling system",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "nombre": { "type": "string", "description": "Name of the task" },
+      "duracion": { "type": "integer", "description": "Duration of the task in minutes" },
+      "deadline": { "type": "string", "format": "date-time", "description": "Deadline in ISO 8601 format" },
+      "prioridad": {
+        "type": "string",
+        "enum": ["alta", "media", "baja"],
+        "description": "Priority of the task"
+      },
+      "categoria": { "type": "string", "description": "Category of the task (e.g., estudio, trabajo, personal)" }
+    },
+    "required": ["nombre", "duracion", "deadline", "prioridad", "categoria"]
+  }
+}
