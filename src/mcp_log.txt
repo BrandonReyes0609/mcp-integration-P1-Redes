@@ -33,3 +33,342 @@
   "tool_use_id": "d19cf42a-66c5-4960-a133-244213a9a51e"
 }
 
+### REQUEST ###
+{
+  "tool_name": "add_task",
+  "tool_use_id": "7074ea4c-c1d7-48c6-b8a9-2b00d0905346",
+  "parameters": {
+    "nombre": "Estudiar para final de redes",
+    "duracion": 90,
+    "deadline": "2025-09-30T23:59",
+    "prioridad": "alta",
+    "categoria": "universidad"
+  }
+}
+### RESPONSE ###
+{
+  "result": {
+    "status": "tarea agregada correctamente",
+    "tareas_totales": 1
+  },
+  "tool_use_id": "7074ea4c-c1d7-48c6-b8a9-2b00d0905346"
+}
+
+### REQUEST ###
+{
+  "tool_name": "add_task",
+  "tool_use_id": "96474aec-4598-423a-8f62-aa25b199361a",
+  "parameters": {
+    "nombre": "Estudiar para final de redes",
+    "duracion": 90,
+    "deadline": "2025-09-30T23:59",
+    "prioridad": "alta",
+    "categoria": "universidad"
+  }
+}
+### RESPONSE ###
+{
+  "result": {
+    "status": "tarea agregada correctamente",
+    "tareas_totales": 2
+  },
+  "tool_use_id": "96474aec-4598-423a-8f62-aa25b199361a"
+}
+
+### REQUEST ###
+{
+  "tool_name": "add_task",
+  "tool_use_id": "9445d64d-a08f-41d1-a81f-144aae3810e5",
+  "parameters": {
+    "nombre": "Estudiar para el examen de redes",
+    "duracion": 90,
+    "deadline": "2025-09-30T23:59",
+    "prioridad": "alta",
+    "categoria": "universidad"
+  }
+}
+### RESPONSE ###
+{
+  "result": {
+    "status": "tarea agregada correctamente",
+    "tareas_totales": 3
+  },
+  "tool_use_id": "9445d64d-a08f-41d1-a81f-144aae3810e5"
+}
+
+### REQUEST ###
+{
+  "tool_name": "add_task",
+  "tool_use_id": "c0b20fea-0eba-438e-a802-46dc8947b5a5",
+  "parameters": {
+    "nombre": "Leer capítulo 5 de inteligencia artificial",
+    "duracion": 60,
+    "deadline": "2025-10-01T23:59",
+    "prioridad": "media",
+    "categoria": "estudio"
+  }
+}
+### RESPONSE ###
+{
+  "result": {
+    "status": "tarea agregada correctamente",
+    "tareas_totales": 4
+  },
+  "tool_use_id": "c0b20fea-0eba-438e-a802-46dc8947b5a5"
+}
+
+### REQUEST ###
+{
+  "tool_name": "add_task",
+  "tool_use_id": "cd8691a4-6953-4024-89c4-bbb1105ae702",
+  "parameters": {
+    "nombre": "Repasar algoritmos",
+    "duracion": 45,
+    "deadline": "2025-09-25T23:59",
+    "prioridad": "baja",
+    "categoria": "universidad"
+  }
+}
+### RESPONSE ###
+{
+  "result": {
+    "status": "tarea agregada correctamente",
+    "tareas_totales": 5
+  },
+  "tool_use_id": "cd8691a4-6953-4024-89c4-bbb1105ae702"
+}
+
+### REQUEST ###
+{
+  "tool_name": "add_task",
+  "tool_use_id": "0f543923-3d2f-4c6b-b031-eecf6fc74cc2",
+  "parameters": {
+    "nombre": "Redactar el reporte de laboratorio de redes",
+    "duracion": 120,
+    "deadline": "2025-10-02T23:59",
+    "prioridad": "alta",
+    "categoria": "universidad"
+  }
+}
+### RESPONSE ###
+{
+  "result": {
+    "status": "tarea agregada correctamente",
+    "tareas_totales": 6
+  },
+  "tool_use_id": "0f543923-3d2f-4c6b-b031-eecf6fc74cc2"
+}
+
+### REQUEST ###
+{
+  "tool_name": "add_task",
+  "tool_use_id": "4078ca42-f2d3-481e-9265-d6d6914d739b",
+  "parameters": {
+    "nombre": "Repasar seguridad informática",
+    "duracion": 30,
+    "deadline": "2025-09-28T23:59",
+    "prioridad": "media",
+    "categoria": "trabajo"
+  }
+}
+### RESPONSE ###
+{
+  "result": {
+    "status": "tarea agregada correctamente",
+    "tareas_totales": 7
+  },
+  "tool_use_id": "4078ca42-f2d3-481e-9265-d6d6914d739b"
+}
+
+### REQUEST ###
+{
+  "tool_name": "list_tasks",
+  "tool_use_id": "f0f16838-cd9a-40bd-a6bc-af1432cb3f9a",
+  "parameters": {}
+}
+### RESPONSE ###
+{
+  "result": {
+    "tasks": [
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-30T23:59",
+        "duracion": 90,
+        "nombre": "Estudiar para final de redes",
+        "prioridad": "alta"
+      },
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-30T23:59",
+        "duracion": 90,
+        "nombre": "Estudiar para final de redes",
+        "prioridad": "alta"
+      },
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-30T23:59",
+        "duracion": 90,
+        "nombre": "Estudiar para el examen de redes",
+        "prioridad": "alta"
+      },
+      {
+        "categoria": "estudio",
+        "deadline": "2025-10-01T23:59",
+        "duracion": 60,
+        "nombre": "Leer capítulo 5 de inteligencia artificial",
+        "prioridad": "media"
+      },
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-25T23:59",
+        "duracion": 45,
+        "nombre": "Repasar algoritmos",
+        "prioridad": "baja"
+      },
+      {
+        "categoria": "universidad",
+        "deadline": "2025-10-02T23:59",
+        "duracion": 120,
+        "nombre": "Redactar el reporte de laboratorio de redes",
+        "prioridad": "alta"
+      },
+      {
+        "categoria": "trabajo",
+        "deadline": "2025-09-28T23:59",
+        "duracion": 30,
+        "nombre": "Repasar seguridad informática",
+        "prioridad": "media"
+      }
+    ]
+  },
+  "tool_use_id": "f0f16838-cd9a-40bd-a6bc-af1432cb3f9a"
+}
+
+### REQUEST ###
+{
+  "tool_name": "list_tasks",
+  "tool_use_id": "17894b88-b0fb-4336-9393-c71787f79d1b",
+  "parameters": {}
+}
+### RESPONSE ###
+{
+  "result": {
+    "tasks": [
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-30T23:59",
+        "duracion": 90,
+        "nombre": "Estudiar para final de redes",
+        "prioridad": "alta"
+      },
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-30T23:59",
+        "duracion": 90,
+        "nombre": "Estudiar para final de redes",
+        "prioridad": "alta"
+      },
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-30T23:59",
+        "duracion": 90,
+        "nombre": "Estudiar para el examen de redes",
+        "prioridad": "alta"
+      },
+      {
+        "categoria": "estudio",
+        "deadline": "2025-10-01T23:59",
+        "duracion": 60,
+        "nombre": "Leer capítulo 5 de inteligencia artificial",
+        "prioridad": "media"
+      },
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-25T23:59",
+        "duracion": 45,
+        "nombre": "Repasar algoritmos",
+        "prioridad": "baja"
+      },
+      {
+        "categoria": "universidad",
+        "deadline": "2025-10-02T23:59",
+        "duracion": 120,
+        "nombre": "Redactar el reporte de laboratorio de redes",
+        "prioridad": "alta"
+      },
+      {
+        "categoria": "trabajo",
+        "deadline": "2025-09-28T23:59",
+        "duracion": 30,
+        "nombre": "Repasar seguridad informática",
+        "prioridad": "media"
+      }
+    ]
+  },
+  "tool_use_id": "17894b88-b0fb-4336-9393-c71787f79d1b"
+}
+
+### REQUEST ###
+{
+  "tool_name": "list_tasks",
+  "tool_use_id": "eb9e5591-9ed6-43c0-ad5b-3f91265715d7",
+  "parameters": {}
+}
+### RESPONSE ###
+{
+  "result": {
+    "tasks": [
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-30T23:59",
+        "duracion": 90,
+        "nombre": "Estudiar para final de redes",
+        "prioridad": "alta"
+      },
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-30T23:59",
+        "duracion": 90,
+        "nombre": "Estudiar para final de redes",
+        "prioridad": "alta"
+      },
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-30T23:59",
+        "duracion": 90,
+        "nombre": "Estudiar para el examen de redes",
+        "prioridad": "alta"
+      },
+      {
+        "categoria": "estudio",
+        "deadline": "2025-10-01T23:59",
+        "duracion": 60,
+        "nombre": "Leer capítulo 5 de inteligencia artificial",
+        "prioridad": "media"
+      },
+      {
+        "categoria": "universidad",
+        "deadline": "2025-09-25T23:59",
+        "duracion": 45,
+        "nombre": "Repasar algoritmos",
+        "prioridad": "baja"
+      },
+      {
+        "categoria": "universidad",
+        "deadline": "2025-10-02T23:59",
+        "duracion": 120,
+        "nombre": "Redactar el reporte de laboratorio de redes",
+        "prioridad": "alta"
+      },
+      {
+        "categoria": "trabajo",
+        "deadline": "2025-09-28T23:59",
+        "duracion": 30,
+        "nombre": "Repasar seguridad informática",
+        "prioridad": "media"
+      }
+    ]
+  },
+  "tool_use_id": "eb9e5591-9ed6-43c0-ad5b-3f91265715d7"
+}
+
