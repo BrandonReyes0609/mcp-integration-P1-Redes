@@ -1,5 +1,10 @@
 # 🚀 MCP-Schedulizer Integration – Project 1 (Delivery 2)
 
+You can clone the local client part for code operation.:
+
+* [https://github.com/BrandonReyes0609/mcp-schedulizer-server-P1-Redes.git](https://github.com/BrandonReyes0609/mcp-schedulizer-server-P1-Redes.git)
+
+
 ## 🎯 Project Purpose
 
 This repository contains the **second delivery** of Project 1 for the course **CC3067 – Computer Networks (UVG)**.
@@ -85,7 +90,6 @@ mcp-schedulizer-integration-P1-Redes/
 
 ```
 
-
 ```
 mcp-schedulizer-integration-P1-Redes/
 │
@@ -114,7 +118,6 @@ mcp-schedulizer-integration-P1-Redes/
 ├── .gitignore                    # Ignorar __pycache__, .env, etc.
 └── LICENSE (opcional)            # Si lo haces público
 ```
-
 
 ```
 /src
