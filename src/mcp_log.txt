@@ -1,0 +1,35 @@
+### REQUEST ###
+{
+  "tool_name": "list_tasks",
+  "tool_use_id": "74b96944-8370-4d3f-bfa8-621553ded7d7",
+  "parameters": {}
+}
+### RESPONSE ###
+{
+  "result": {
+    "tasks": []
+  },
+  "tool_use_id": "74b96944-8370-4d3f-bfa8-621553ded7d7"
+}
+
+### REQUEST ###
+{
+  "tool_name": "add_task",
+  "tool_use_id": "d19cf42a-66c5-4960-a133-244213a9a51e",
+  "parameters": {
+    "nombre": "Escribir",
+    "duracion": 20,
+    "deadline": "2025-09-15T23:59",
+    "prioridad": "media",
+    "categoria": "general"
+  }
+}
+### RESPONSE ###
+{
+  "result": {
+    "status": "tarea agregada correctamente",
+    "tareas_totales": 1
+  },
+  "tool_use_id": "d19cf42a-66c5-4960-a133-244213a9a51e"
+}
+
